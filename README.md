@@ -1,33 +1,90 @@
-# Projeto Integrador IEEP - Sistema de Solicitação de Documentos Digitais
+# SIPE
 
-Bem-vindo ao repositório oficial do Sistema Integrado de Pedidos Escolares (SIPE). 
-Este projeto visa digitalizar e otimizar a solicitação de documentos para alunos e servidores.
+> Sistema de solicitação de documentos digitais do IEEP para alunos e servidores.
 
-## Tecnologias e Ferramentas Utilizadas
+## Sobre
 
-**Ambiente de Desenvolvimento & Execução:**
-* VS Code
-* Node.js (gerenciamento de pacotes via NPM)
+O **SIPE** (Sistema Integrado de Pedidos Escolares) é o projeto integrador do IEEP.
+O objetivo é digitalizar e otimizar a solicitação de documentos para alunos e
+servidores, substituindo o fluxo manual por uma aplicação web.
 
-**Frontend & Identidade Visual:**
-* React.js (via Vite)
-* Tailwind CSS (estilização)
-* AOS (animações)
-* Font Awesome (iconografia)
-* Google Sans (família tipográfica escolhida para visual limpo e institucional)
-* React Router DOM (roteamento SPA para navegação instantânea sem recarregar a tela)
-* Recharts (geração de gráficos interativos em SVG para a aba de métricas)
+## Funcionalidades
 
-**APIs e Recursos Nativos do Navegador:**
-* LocalStorage (gerenciamento de sessão para manter usuários logados de forma segura)
-* FormData (interface para empacotamento simultâneo de textos e arquivos físicos, como PDFs, para o backend)
+- Login e sessão para alunos, secretários e administradores.
+- Abertura e acompanhamento de solicitações de documentos.
+- Upload de arquivos e PDFs para as solicitações.
+- Respostas e atualização de status pela secretaria.
+- Painel de métricas de atendimento com gráficos.
+- Gestão de usuários e configurações pelo administrador.
+- Navegação SPA com React Router.
+- Perfil do usuário e troca de senha.
 
-**Backend & Segurança:**
-* PHP (arquitetura de API)
-* PDO - PHP Data Objects (padrão moderno orientado a objetos para prevenção contra SQL Injection)
-* MD5 (algoritmo de hash para mascarar senhas e proteger dados sensíveis no banco)
-* Tratamento de CORS (configuração de cabeçalhos para comunicação segura entre a porta do React e a do servidor local)
+## Tecnologias
 
-**Banco de Dados & Servidor Local:**
-* XAMPP (Apache e MySQL)
-* MySQL Workbench (modelagem e scripts SQL)
+### Frontend
+
+- React + Vite
+- Tailwind CSS
+- AOS (animações)
+- Font Awesome
+- Google Sans
+- React Router DOM
+- Recharts
+- LocalStorage e FormData
+
+### Backend e banco
+
+- PHP com PDO
+- MySQL (XAMPP)
+- MD5 para senhas no projeto acadêmico (para produção, use
+  `password_hash`/`password_verify`)
+- CORS
+
+## Download e acesso
+
+Não há uma demo pública. O sistema roda localmente com XAMPP; siga os passos abaixo.
+
+## Como rodar
+
+### Requisitos
+
+- Node.js e npm
+- XAMPP (Apache + MySQL)
+- PHP
+
+### Banco de dados
+
+1. Inicie o MySQL no XAMPP.
+2. Importe `sistema-sipe/database/database_sipev3.4.1.sql` no phpMyAdmin.
+3. O `conexao.php` usa o banco `projeto_integrador`, usuário `root` e senha vazia;
+   ajuste se o seu ambiente for diferente.
+
+### Backend
+
+Copie a pasta `sistema-sipe/backend` para `htdocs/pdgdsa/backend` e inicie o Apache.
+O frontend chama a API em `http://localhost/pdgdsa/backend/...`.
+
+### Frontend
+
+```bash
+cd sistema-sipe/frontend
+npm install
+npm run dev
+```
+
+Abra a URL exibida pelo Vite (normalmente `http://localhost:5173`).
+
+## Estrutura
+
+```
+sistema-sipe/frontend    aplicação React/Vite
+sistema-sipe/backend     API PHP
+sistema-sipe/database    scripts SQL e modelo do MySQL Workbench
+site-institucional       site de apresentação do projeto
+organizar/               documentos e materiais do projeto
+projeto-escrito/         documento escrito
+```
+
+## Licença
+
+Projeto acadêmico do IEEP; sem licença definida.
